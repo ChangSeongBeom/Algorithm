@@ -9,11 +9,16 @@
 #                     answer.append(j)
 #         return answer
 #
-nums = [2,7,11,15]
-hash_dict={}
-hash_dict['a']=1
-hash_dict['aa']=123
-hash_dict['ab']=1
-hash_dict['c']=1
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hash_dict = {}
+        result = []
+        for i, num in enumerate(nums):
+            hash_dict[num] = i
 
-print(hash_dict.values())
+        for i in range(0, len(nums)):
+            if target - nums[i] in hash_dict and i != hash_dict[target - nums[i]]:
+                result.append(i)
+                result.append(hash_dict[target - nums[i]])
+                break
+        return result
